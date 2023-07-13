@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${titulo}"></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+	<!-- ************* FORMULARIO CLIENTE *************  -->
+	<div class="container-fluid px-1 py-5 mx-auto">
+		<div class="row d-flex justify-content-center">
+			<div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+				<h3 th:text="${titulo}" class="text-secondary"></h3>
+				<div class="card">
+					<h5 class="text-center mt-3 mb-2">Complete los siguientes campos</h5>
+					<form th:action="@{/form}" th:object="${cliente}" method="post" class="form-card px-3">
+						<div class="row justify-content-between text-left">
+							
+							<!-- ************* Nombre *************  -->
+							<div class="form-group col-sm-6 flex-column d-flex">
+								<label for="exampleFormControlInput1" class="form-label">Nombre<span class="text-danger">*</span></label>
+								<input th:field="*{nombre}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su nombre" th:errorclass="'form-control alert-danger'">
+								<small class="form-text text-danger" th:if"${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+							</div>
+							
+							<!-- ************* Apellido *************  -->
+							<div class="form-group col-sm-6 flex-column d-flex">
+								<label for="exampleFormControlInput1" class="form-label">Apellido<span class="text-danger"> *</span></label>
+								<input th:field="*{apellido}" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su apellido" th:errorclass="'form-control alert-danger'">
+								<small class="form-text text-danger" th:if"${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+							</div>
+							
+							<!-- ************* EMAIL *************  -->
+							<div class="form-group col-sm-6 flex-column d-flex">
+								<label for="exampleFormControlInput1" class="form-label">Dirección de Email<span class="text-danger"> *</span></label>
+								<input th:field="*{email}" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su email" th:errorclass="'form-control alert-danger'">
+								<small class="form-text text-danger" th:if"${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+							</div>		
+							
+							<div class="form-group col-sm-6 flex-column d-flex">
+								<label for="exampleFormControlInput1" class="form-label">Fecha de Ingreso<span class="text-danger"> *</span></label>
+								<input th:field="*{createAt}" type="date" class="form-control" id="exampleFormControlInput1" th:errorclass="'form-control alert-danger'">
+								<small class="form-text text-danger" th:if"${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+							</div>					
+
+						</div>
+
+							<!-- ************* BTN ENVIAR *************  -->					
+						<div class="d-grid gap-2 col-6 mx-auto">
+  							<button class="btn btn-primary my-4" type="submit">Guardar cliente</button>
+						</div>
+						
+						<!--<input type="hidden" th:field="*{id}" />-->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ************* SCRIPT ************* -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
